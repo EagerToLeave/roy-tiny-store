@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: tiny-store-auth-center
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr:  192.168.59.252:8848
+        file-extension: yml
+        shared-dataids: tiny-store-db-common.yml,tiny-store-nacos.yml
+        refreshable-dataids: tiny-store-db-common.yml,tiny-store-nacos.yml
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          nacos:
+            client: warn

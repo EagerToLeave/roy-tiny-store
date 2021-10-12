@@ -1,5 +1,6 @@
 package com.tiny.store.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tiny.store.model.UmsMember;
 import com.tiny.store.model.UmsMemberExample;
 import java.util.List;
@@ -7,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface UmsMemberMapper {
+public interface UmsMemberMapper extends BaseMapper<UmsMember> {
     long countByExample(UmsMemberExample example);
 
     int deleteByExample(UmsMemberExample example);
