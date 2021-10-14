@@ -2,10 +2,13 @@ package com.roy.mall.auth.config;
 
 import com.roy.mall.auth.enhancer.Oauth2TokenEnhancer;
 import com.roy.mall.auth.properties.JwtCAProperties;
+import com.roy.mall.auth.service.TinyStoreUserDetailsService;
 import java.security.KeyPair;
 import java.util.Arrays;
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -33,11 +37,17 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 @EnableConfigurationProperties(value = JwtCAProperties.class)
 public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
-  @Autowired private AuthenticationManager authenticationManager;
+  @Autowired
+  private AuthenticationManager authenticationManager;
 
-  @Autowired private DataSource dataSource;
+  @Autowired
+  private DataSource dataSource;
 
-  @Autowired private JwtCAProperties jwtCAProperties;
+  @Resource
+  private JwtCAProperties jwtCAProperties;
+
+  @Autowired
+  private TinyStoreUserDetailsService tinyStoreUserDetailsService;
 
   /**
    * 记录认证中心需要给哪些服务颁发token，将客户端信息持久化，可选择基于内存/DB
@@ -72,9 +82,18 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     tokenEnhancerChain.setTokenEnhancers(
         Arrays.asList(oauthTokenEnhancer(), jwtAccessTokenConverter()));
     // 设置token存储方式
-    endpoints.tokenStore(tokenStore())
+    endpoints
+        .tokenStore(tokenStore())
         .tokenEnhancer(tokenEnhancerChain)
-        .userDetailsService()
+        // 校验用户名密码
+        .userDetailsService(tinyStoreUserDetailsService)
+        .authenticationManager(authenticationManager);
+  }
+
+  @Override
+  public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    // 第三方客户端校验token需要携带clientId和clientSecret
+    security.checkTokenAccess("isAuthenticated()").tokenKeyAccess("isAuthenticated()");
   }
 
   @Bean

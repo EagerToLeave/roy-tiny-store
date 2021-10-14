@@ -1,0 +1,54 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: tiny-store-gateway
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.59.252:8848:9999
+      datasource:
+        gw-flow:
+          nacos:
+            server-addr: 192.168.59.252:8848:8848
+            dataId: ${spring.application.name}-getway-flow
+            groupId: SENTINEL_GROUP
+            rule-type: gw-flow
+        gw-api-group:
+          nacos:
+            server-addr: tlshop.com:8848
+            dataId: ${spring.application.name}-getway-api
+            groupId: SENTINEL_GROUP
+            rule-type: gw-api-group    
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: false
+      routes:
+        - id: tiny-store-auth-center
+          uri: lb://tiny-store-auth-center
+          predicates:
+            - Path=/oauth/**
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    org.springframework.cloud.gateway: warn
+
+tuling:
+  gateway:
+    shouldSkipUrls:
+      - /oauth/**
+      - /sso/**
+      - /home/**
+      - /portal/commentlist/**
+      - /order/paySuccess/**
+      - /pms/**
+      - /static/qrcode/**

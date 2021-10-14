@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.tiny.store</groupId>
+    <artifactId>roy-tiny-store</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>tiny-store-infrastructure</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>tiny-store-infrastructure</name>
+  <description>基础代码</description>
+
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.tiny.store</groupId>
+      <artifactId>tiny-store-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.atool</groupId>
+      <artifactId>fluent-mybatis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.atool</groupId>
+      <artifactId>fluent-mybatis-processor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.atool</groupId>
+      <artifactId>generator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>mysql-connector-java</artifactId>
+      <groupId>mysql</groupId>
+    </dependency>
+  </dependencies>
+
+</project>
