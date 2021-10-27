@@ -28,16 +28,19 @@
       <artifactId>pagehelper-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.github.atool</groupId>
-      <artifactId>fluent-mybatis</artifactId>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>com.github.atool</groupId>
-      <artifactId>fluent-mybatis-processor</artifactId>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
     </dependency>
+    <!--freemarker模板-->
     <dependency>
-      <groupId>com.github.atool</groupId>
-      <artifactId>generator</artifactId>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
     </dependency>
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -46,6 +49,14 @@
     <dependency>
       <artifactId>mysql-connector-java</artifactId>
       <groupId>mysql</groupId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
     </dependency>
   </dependencies>
 

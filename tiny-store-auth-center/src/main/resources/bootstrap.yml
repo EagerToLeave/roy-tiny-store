@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr:  192.168.59.252:8848
+        server-addr:  47.100.208.112:8848
         file-extension: yml
         shared-dataids: tiny-store-db-common.yml,tiny-store-nacos.yml
         refreshable-dataids: tiny-store-db-common.yml,tiny-store-nacos.yml

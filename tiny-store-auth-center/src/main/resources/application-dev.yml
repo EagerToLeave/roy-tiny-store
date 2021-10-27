@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/roy-mall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/tiny-store?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     druid:
@@ -15,8 +15,9 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
+      keep-alive-between-time-millis: 5000
   redis:
-#    host: 192.168.59.252 # Redis服务器地址
+    #    host: 192.168.59.252 # Redis服务器地址
     host: 127.0.0.1 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
@@ -27,7 +28,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.59.252:8848
+        server-addr: 47.100.208.112:8848 #阿里云Nacos服务
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml
@@ -44,8 +45,8 @@ tiny-store:
   jwt:
     keyPairName: jwt.jks
     keyPairAlias: jwt
-    keyPairSecret: 123456
-    keyPairStoreSecret: 123456
+    keyPairSecret: 123123
+    keyPairStoreSecret: 123123
 
 
 

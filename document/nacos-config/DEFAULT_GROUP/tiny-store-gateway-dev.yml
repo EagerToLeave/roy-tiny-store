@@ -6,17 +6,17 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: 192.168.59.252:8848:9999
+        dashboard: 47.100.208.112:8848:9999
       datasource:
         gw-flow:
           nacos:
-            server-addr: 192.168.59.252:8848:8848
+            server-addr: 47.100.208.112:8848:8848
             dataId: ${spring.application.name}-getway-flow
             groupId: SENTINEL_GROUP
             rule-type: gw-flow
         gw-api-group:
           nacos:
-            server-addr: tlshop.com:8848
+            server-addr: 47.100.208.112:8848
             dataId: ${spring.application.name}-getway-api
             groupId: SENTINEL_GROUP
             rule-type: gw-api-group    

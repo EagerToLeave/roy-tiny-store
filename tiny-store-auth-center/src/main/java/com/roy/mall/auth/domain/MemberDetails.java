@@ -1,7 +1,6 @@
 package com.roy.mall.auth.domain;
 
-//import com.tiny.store.fluent.entity.UmsMemberEntity;
-import com.tiny.store.fluent.entity.UmsMemberEntity;
+import com.tiny.store.entity.UmsMember;
 import java.util.Collection;
 import java.util.Collections;
 import lombok.Getter;
@@ -17,9 +16,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Getter
 public class MemberDetails implements UserDetails {
 
-  private UmsMemberEntity umsMember;
+  private UmsMember umsMember;
 
-  public MemberDetails(UmsMemberEntity umsMember) {
+  public MemberDetails(UmsMember umsMember) {
     this.umsMember = umsMember;
   }
 
