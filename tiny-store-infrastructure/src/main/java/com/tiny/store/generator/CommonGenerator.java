@@ -10,13 +10,16 @@ import java.util.Collections;
 public class CommonGenerator {
   public static void main(String[] args) {
 
-    FastAutoGenerator.create("jdbc:mysql://localhost:3306/tiny-store", "root", "root")
+    FastAutoGenerator.create(
+            "jdbc:mysql://127.0.0.1:3306/tiny-store?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8",
+            "root",
+            "root")
         .globalConfig(
             builder -> {
               builder
                   .author("roy") // 作者
                   .outputDir(
-                      "/Users/roy/workspace/programs/roy-tiny-store/tiny-store-infrastructure/src/main/java") // 输出路径(写到java目录)
+                      "F:\\develop\\roy-tiny-store\\tiny-store-infrastructure\\src\\main\\java") // 输出路径(写到java目录)
                   .enableSwagger() // 开启swagger
                   .commentDate("yyyy-MM-dd")
                   .fileOverride(); // 开启覆盖之前生成的文件
@@ -35,12 +38,12 @@ public class CommonGenerator {
                   .pathInfo(
                       Collections.singletonMap(
                           OutputFile.mapperXml,
-                          "/Users/roy/workspace/programs/roy-tiny-store/tiny-store-infrastructure/src/main/resources/mapper"));
+                          "F:\\develop\\roy-tiny-store\\tiny-store-infrastructure\\src\\main\\resources\\mapper"));
             })
         .strategyConfig(
             builder -> {
               builder
-                  //                  .addTablePrefix("ums_")
+                  // .addTablePrefix("ums_")
                   .serviceBuilder()
                   .formatServiceFileName("%sService")
                   .formatServiceImplFileName("%sServiceImpl")

@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author roy
- * @since 2021-10-24
+ * @since 2021-11-01
  */
 @Mapper
 public interface CmsPrefrenceAreaMapper extends BaseMapper<CmsPrefrenceArea> {

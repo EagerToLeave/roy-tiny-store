@@ -18,6 +18,40 @@
   </properties>
   <dependencies>
     <dependency>
+      <groupId>com.tiny.store</groupId>
+      <artifactId>tiny-store-infrastructure</artifactId>
+    </dependency>
+    <!--open feign远程调用-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-okhttp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>aliyun-sdk-oss</artifactId>
+      <groupId>com.aliyun.oss</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <groupId>net.logstash.logback</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>freemarker</artifactId>
+      <groupId>org.freemarker</groupId>
+      <version>2.3.23</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
